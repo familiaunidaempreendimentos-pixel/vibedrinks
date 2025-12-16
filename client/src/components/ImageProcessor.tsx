@@ -68,7 +68,7 @@ export function ImageProcessor() {
       if (!data.images || data.images.length === 0) {
         toast({
           title: 'Nenhuma imagem encontrada',
-          description: 'Nao ha imagens para processar no bucket.',
+          description: 'Não há imagens para processar no bucket.',
         });
         setIsProcessing(false);
         return;
@@ -101,7 +101,7 @@ export function ImageProcessor() {
       }
 
       toast({
-        title: 'Processamento concluido!',
+        title: 'Processamento concluído!',
         description: `${totalImages} imagens processadas. Economia total: ${formatBytes(savings)}`,
       });
     } catch (error) {
@@ -132,7 +132,7 @@ export function ImageProcessor() {
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">
           Este processador vai otimizar todas as imagens do bucket do Supabase, 
-          compactando e convertendo para WebP para melhorar a velocidade de carregamento.
+          compactando e normalizando para melhorar a velocidade de carregamento.
         </p>
 
         {!isProcessing && results.length === 0 && (
@@ -154,7 +154,7 @@ export function ImageProcessor() {
             </div>
             <Progress value={progress} className="h-3" />
             <div className="flex justify-between text-xs text-muted-foreground">
-              <span>{progress}% concluido</span>
+              <span>{progress}% concluído</span>
               <span>Economia: {formatBytes(totalSavings)}</span>
             </div>
           </div>
@@ -171,7 +171,7 @@ export function ImageProcessor() {
               )}
               {skippedCount > 0 && (
                 <Badge variant="outline" className="bg-yellow-500/10 text-yellow-400 border-yellow-500/30">
-                  {skippedCount} ja otimizadas
+                  {skippedCount} já otimizadas
                 </Badge>
               )}
               {errorCount > 0 && (
