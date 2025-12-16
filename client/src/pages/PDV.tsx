@@ -183,7 +183,7 @@ export default function PDV() {
 
   const handleConfirmPayment = () => {
     if (!paymentMethod) {
-      toast({ title: 'Selecione um metodo de pagamento', variant: 'destructive' });
+      toast({ title: 'Selecione um método de pagamento', variant: 'destructive' });
       return;
     }
 
@@ -215,8 +215,8 @@ export default function PDV() {
   const paymentMethods: { id: PaymentMethod; label: string; icon: any }[] = [
     { id: 'cash', label: 'Dinheiro', icon: Banknote },
     { id: 'pix', label: 'PIX', icon: QrCode },
-    { id: 'card_debit', label: 'Debito', icon: CreditCard },
-    { id: 'card_credit', label: 'Credito', icon: CreditCard },
+    { id: 'card_debit', label: 'Débito', icon: CreditCard },
+    { id: 'card_credit', label: 'Crédito', icon: CreditCard },
   ];
 
   const change = paymentMethod === 'cash' && changeFor ? parseFloat(changeFor) - total : 0;
@@ -313,7 +313,7 @@ export default function PDV() {
 
       <div className="p-3 border-t border-border space-y-2">
         <Input
-          placeholder="Observacoes..."
+          placeholder="Observações..."
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           className="bg-secondary border-primary/30 text-sm"
@@ -331,7 +331,7 @@ export default function PDV() {
             type="number"
             step="0.01"
             min="0"
-            placeholder="Desconto R$"
+            placeholder="Desconto R$ (ex: 10.50)"
             value={manualDiscount}
             onChange={(e) => setManualDiscount(e.target.value)}
             className="bg-secondary border-primary/30 text-sm flex-1"
@@ -597,7 +597,7 @@ export default function PDV() {
           </DialogHeader>
           <div className="py-4">
             <p className="text-base">
-              O produto <strong>{stockAlertProduct?.name}</strong> esta com estoque zerado ou voce ja adicionou a quantidade maxima disponivel ({stockAlertProduct?.stock ?? 0} unidades).
+              O produto <strong>{stockAlertProduct?.name}</strong> está com estoque zerado ou você já adicionou a quantidade máxima disponível ({stockAlertProduct?.stock ?? 0} unidades).
             </p>
           </div>
           <div className="flex justify-end">

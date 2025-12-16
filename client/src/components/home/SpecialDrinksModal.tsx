@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Wine, Loader2, Plus, Minus, ShoppingCart, Sparkles, Pause, Play, GripHorizontal } from 'lucide-react';
 import type { Product, Category } from '@shared/schema';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getStorageUrl } from '@/lib/supabase';
 
 interface SpecialDrinksModalProps {
   open: boolean;
@@ -93,7 +94,7 @@ export function SpecialDrinksModal({ open, onOpenChange }: SpecialDrinksModalPro
       if (product.stock <= 0 || currentQty >= product.stock) {
         toast({
           title: 'Estoque Insuficiente',
-          description: `O produto ${product.name} esta com estoque zerado ou voce ja adicionou a quantidade maxima disponivel.`,
+          description: `O produto ${product.name} está com estoque zerado ou você já adicionou a quantidade máxima disponível.`,
           variant: 'destructive',
         });
         return;
@@ -174,7 +175,7 @@ export function SpecialDrinksModal({ open, onOpenChange }: SpecialDrinksModalPro
                 {specialDrinks.length === 0 ? (
                   <div className="text-center py-8 sm:py-12">
                     <Wine className="h-10 w-10 sm:h-12 sm:w-12 mx-auto text-muted-foreground mb-4" />
-                    <p className="text-muted-foreground text-sm sm:text-base">Nenhum drink especial disponivel no momento.</p>
+                    <p className="text-muted-foreground text-sm sm:text-base">Nenhum drink especial disponível no momento.</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -221,7 +222,7 @@ export function SpecialDrinksModal({ open, onOpenChange }: SpecialDrinksModalPro
                               <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-purple-900/20 to-pink-900/20">
                                 {currentDrink.imageUrl ? (
                                   <img
-                                    src={currentDrink.imageUrl}
+                                    src={getStorageUrl(currentDrink.imageUrl)}
                                     alt={currentDrink.name}
                                     className="w-full h-full object-contain"
                                     loading="lazy"
